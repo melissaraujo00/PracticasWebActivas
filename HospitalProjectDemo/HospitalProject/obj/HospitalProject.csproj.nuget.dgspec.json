@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dalia\\source\\repos\\HospitalProjectDemo\\HospitalProject\\HospitalProject.csproj": {}
+    "C:\\Users\\dalia\\source\\repos\\PracticasWebActivas\\HospitalProjectDemo\\HospitalProject\\HospitalProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dalia\\source\\repos\\HospitalProjectDemo\\HospitalProject\\HospitalProject.csproj": {
+    "C:\\Users\\dalia\\source\\repos\\PracticasWebActivas\\HospitalProjectDemo\\HospitalProject\\HospitalProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dalia\\source\\repos\\HospitalProjectDemo\\HospitalProject\\HospitalProject.csproj",
+        "projectUniqueName": "C:\\Users\\dalia\\source\\repos\\PracticasWebActivas\\HospitalProjectDemo\\HospitalProject\\HospitalProject.csproj",
         "projectName": "HospitalProject",
-        "projectPath": "C:\\Users\\dalia\\source\\repos\\HospitalProjectDemo\\HospitalProject\\HospitalProject.csproj",
+        "projectPath": "C:\\Users\\dalia\\source\\repos\\PracticasWebActivas\\HospitalProjectDemo\\HospitalProject\\HospitalProject.csproj",
         "packagesPath": "C:\\Users\\dalia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dalia\\source\\repos\\HospitalProjectDemo\\HospitalProject\\obj\\",
+        "outputPath": "C:\\Users\\dalia\\source\\repos\\PracticasWebActivas\\HospitalProjectDemo\\HospitalProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

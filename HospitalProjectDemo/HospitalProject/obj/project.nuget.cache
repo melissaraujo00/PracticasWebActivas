@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qmkd/U/cuM8=",
+  "dgSpecHash": "g8Sh1YooI8E=",
   "success": true,
-  "projectFilePath": "C:\\Users\\dalia\\source\\repos\\HospitalProjectDemo\\HospitalProject\\HospitalProject.csproj",
+  "projectFilePath": "C:\\Users\\dalia\\source\\repos\\PracticasWebActivas\\HospitalProjectDemo\\HospitalProject\\HospitalProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dalia\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\dalia\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
