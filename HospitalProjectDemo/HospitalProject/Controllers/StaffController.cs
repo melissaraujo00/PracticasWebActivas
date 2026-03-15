@@ -5,20 +5,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HospitalProject.Controllers
 {
-    public class StaffCategoryController : Controller
+    public class StaffController : Controller
     {
-        private readonly StaffCategoryRepository _staffCategoryRepository;
+        private readonly StaffReposity _staffRepository;
 
-        public StaffCategoryController(StaffCategoryRepository staffCategoryRepository)
+        public StaffController(StaffReposity staffRepository)
         {
-            _staffCategoryRepository = staffCategoryRepository;
+            _staffRepository = staffRepository;
         }
 
         // GET: SpecialtyController
         public IActionResult Index()
         {
-            var staffCategoryList = _staffCategoryRepository.GetAll();
-            return View(staffCategoryList);
+            var staffList = _staffRepository.GetAll();
+            return View(staffList);
         }
 
 
@@ -32,37 +32,37 @@ namespace HospitalProject.Controllers
         // POST: SpecialtyController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(StaffCategoryModel staffCategoryModel)
+        public IActionResult Create(StaffModel staffModel)
         {
             if (ModelState.IsValid)
             {
-                _staffCategoryRepository.Add(staffCategoryModel);
+                _staffRepository.Add(staffModel);
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(staffCategoryModel);
+            return View(staffModel);
         }
 
         // GET: SpecialtyController/Edit/5
         public IActionResult Edit(int id)
         {
-            var staffCategory = _staffCategoryRepository.GetById(id);
-            if (staffCategory == null) return NotFound();
+            var staff = _staffRepository.GetById(id);
+            if (staff == null) return NotFound();
 
-            return View(staffCategory);
+            return View(staff);
         }
 
         // POST: SpecialtyController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(StaffCategoryModel staffCategoryModel)
+        public IActionResult Edit(StaffModel staffModel)
         {
             if (ModelState.IsValid)
             {
-                _staffCategoryRepository.Update(staffCategoryModel);
+                _staffRepository.Update(staffModel);
                 return RedirectToAction(nameof(Index));
             }
-            return View(staffCategoryModel);
+            return View(staffModel);
         }
 
 
@@ -72,7 +72,7 @@ namespace HospitalProject.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
-            _staffCategoryRepository.Delete(id);
+            _staffRepository.Delete(id);
             return RedirectToAction(nameof(Index));
         }
     }
