@@ -2,16 +2,21 @@
 using HospitalProject.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HospitalProject.Controllers
 {
     public class StaffController : Controller
     {
         private readonly StaffReposity _staffRepository;
+        private readonly StaffCategoryRepository _staffCategoryRepository;
+        private readonly SpecialtyRepository specialtyRepository;
 
-        public StaffController(StaffReposity staffRepository)
+        public StaffController(StaffReposity staffRepository, StaffCategoryRepository staffCategoryRepository, SpecialtyRepository specialtyRepository)
         {
             _staffRepository = staffRepository;
+            _staffCategoryRepository = staffCategoryRepository;
+            this.specialtyRepository = specialtyRepository;
         }
 
         // GET: SpecialtyController
@@ -26,6 +31,12 @@ namespace HospitalProject.Controllers
         // GET: SpecialtyController/Create
         public IActionResult Create()
         {
+            var specialties = specialtyRepository.GetAll();
+            var staffCategories = _staffCategoryRepository.GetAll();
+
+            ViewBag.Specialties = new SelectList(specialties, nameof(SpecialtyModel.Id), nameof(SpecialtyModel.Name));
+            ViewBag.StaffCategories = new SelectList(staffCategories, nameof(StaffCategoryModel.Id), nameof(StaffCategoryModel.Name));
+
             return View();
         }
 
@@ -34,7 +45,7 @@ namespace HospitalProject.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(StaffModel staffModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _staffRepository.Add(staffModel);
                 return RedirectToAction(nameof(Index));
@@ -49,6 +60,12 @@ namespace HospitalProject.Controllers
             var staff = _staffRepository.GetById(id);
             if (staff == null) return NotFound();
 
+            var specialties = specialtyRepository.GetAll();
+            var staffCategories = _staffCategoryRepository.GetAll();
+
+            ViewBag.Specialties = new SelectList(specialties, nameof(SpecialtyModel.Id), nameof(SpecialtyModel.Name), staff.SpecialtyId);
+            ViewBag.StaffCategories = new SelectList(staffCategories, nameof(StaffCategoryModel.Id), nameof(StaffCategoryModel.Name), staff.StaffCategoryId);
+
             return View(staff);
         }
 
@@ -57,7 +74,7 @@ namespace HospitalProject.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(StaffModel staffModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _staffRepository.Update(staffModel);
                 return RedirectToAction(nameof(Index));
@@ -65,14 +82,19 @@ namespace HospitalProject.Controllers
             return View(staffModel);
         }
 
+        public IActionResult Delete(int id) { 
+            var staff = _staffRepository.GetById(id);
+            if (staff == null) return NotFound();
+            return View(staff);
+        }
 
 
         // POST: SpecialtyController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(StaffModel staffModel)
         {
-            _staffRepository.Delete(id);
+            _staffRepository.Delete(staffModel.Id);
             return RedirectToAction(nameof(Index));
         }
     }
